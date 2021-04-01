@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import styled from 'styled-components';
 import { auth } from '../firebase';
@@ -9,7 +10,10 @@ function Message({user, message}) {
 
     return (
         <Container>
-            <TypeOfMessage>{message.message}</TypeOfMessage>
+            <TypeOfMessage>
+                {message.message}
+                <Timestamp>{message.timestamp ? moment(message.timestamp).format('LT') : '...' }</Timestamp>
+            </TypeOfMessage>
         </Container>
     )
 }
@@ -48,3 +52,4 @@ const Timestamp = styled.span`
     text-align: right;
     right: 0;
 `;
+
