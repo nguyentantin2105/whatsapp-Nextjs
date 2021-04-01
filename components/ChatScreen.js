@@ -11,6 +11,7 @@ import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import MicIcon from "@material-ui/icons/Mic";
 import { useState } from 'react';
 import firebase from 'firebase';
+import getRecipientEmail from '../utils/getRecipientEmail';
 
 function ChatScreen({chat, messages}) {
 
@@ -58,13 +59,15 @@ function ChatScreen({chat, messages}) {
         setInput("");
     };
 
+    const recipientEmail = getRecipientEmail(chat.users, user);
+
     return (
         <Container>
             <Header>
                 <Avatar />
 
                 <HeaderInf>
-                    <h3>Recipient Email</h3>
+                    <h3>{recipientEmail}</h3>
                     <p>Last seen</p>
                 </HeaderInf>
 
